@@ -134,13 +134,17 @@ No Web Service, em **Environment**:
 | `REDIS_URL`       | Internal Redis URL do Key Value                  |
 | `UPLOAD_DIR`      | `/var/data/uploads`                              |
 
+> Não defina `NODE_ENV` manualmente no Render. Quando `NODE_ENV=production`
+> é usado durante o build, o npm pode ignorar dependências necessárias para
+> compilar o Next.js, como TypeScript e Tailwind.
+
 ### 4. Deploy
 
 Configuração do Web Service:
 
 | Campo          | Valor                         |
 | -------------- | ----------------------------- |
-| Build Command  | `npm install && npm run build` |
+| Build Command  | `npm ci --include=dev && npm run build` |
 | Start Command  | `npm start`                   |
 
 `git push` → deploy automático.
